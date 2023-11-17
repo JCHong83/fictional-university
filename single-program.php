@@ -5,7 +5,7 @@ get_header();
 while (have_posts()) {
   the_post();
   pageBanner();
-  ?>
+?>
 
   <div class="container container--narrow page-section">
     <div class="metabox metabox--position-up metabox--with-home-link">
@@ -14,7 +14,7 @@ while (have_posts()) {
       </p>
     </div>
     <div class="generic-content">
-      <?php the_content(); ?>
+      <?php the_field('main_body_content'); ?>
     </div>
 
     <?php
@@ -93,13 +93,16 @@ while (have_posts()) {
       echo '<h2 class="headline headline--medium">' . get_the_title() . ' is Available at These Campuses:</h2>';
 
       echo '<ul class="min-list link-list">';
-      foreach($relatedCampuses as $campus) {
-        ?> <li><a href="<?php echo the_permalink($campus); ?>"><?php echo get_the_title($campus); ?></a></li> <?php
-      }
+      foreach ($relatedCampuses as $campus) {
+      ?>
+        <li>
+          <a href="<?php echo the_permalink($campus); ?>">
+            <?php echo get_the_title($campus); ?>
+          </a>
+        </li>
+    <?php }
       echo '</ul>';
-    }
-
-    ?>
+    } ?>
 
   </div>
 
